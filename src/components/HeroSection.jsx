@@ -3,20 +3,17 @@ import React, { useState, useEffect, useRef } from "react";
 const slides = [
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1950&q=80",
-    title: "Dignity Above All",
+      "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop", title: "Dignity Above All",
     description: "Serving the underprivileged with critical medical care.",
   },
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1508672019048-805c876b67e2?auto=format&fit=crop&w=1950&q=80",
-    title: "Building Hope Together",
+      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop", title: "Building Hope Together",
     description: "Empowering communities through sustainable projects.",
   },
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1950&q=80",
-    title: "Clean Water for All",
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=600&fit=crop", title: "Clean Water for All",
     description: "Bringing safe drinking water to remote villages.",
   },
   {
@@ -27,8 +24,7 @@ const slides = [
   },
   {
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1950&q=80",
-    title: "Healthcare Access",
+      "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop", title: "Healthcare Access",
     description: "Mobile clinics reaching the farthest corners.",
   },
 ];
@@ -65,9 +61,8 @@ const HeroCarousel = () => {
       {slides.map((slide, idx) => (
         <div
           key={idx}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            idx === current ? "opacity-100 z-20" : "opacity-0 z-10"
-          }`}
+          className={`absolute inset-0 transition-opacity duration-1000 ${idx === current ? "opacity-100 z-20" : "opacity-0 z-10"
+            }`}
         >
           <img
             src={slide.imageUrl}
@@ -94,11 +89,10 @@ const HeroCarousel = () => {
           <button
             key={idx}
             onClick={() => goToSlide(idx)}
-            className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all ${
-              idx === current
-                ? "bg-white ring-2 ring-yellow-400"
-                : "bg-gray-300 hover:bg-gray-400"
-            }`}
+            className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all ${idx === current
+              ? "bg-white ring-2 ring-yellow-400"
+              : "bg-gray-300 hover:bg-gray-400"
+              }`}
           ></button>
         ))}
       </div>

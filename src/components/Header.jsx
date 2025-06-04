@@ -65,22 +65,10 @@ const Header = () => {
               {aboutDropdownOpen && (
                 <div className="absolute left-0 mt-2 w-40 bg-white border border-gray-200 rounded-md shadow-lg z-20">
                   <Link
-                    to="/about/mission"
+                    to="/about-us"
                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
-                    Our Mission
-                  </Link>
-                  <Link
-                    to="/about/history"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    Our History
-                  </Link>
-                  <Link
-                    to="/about/values"
-                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
-                  >
-                    Our Values
+                    About Us
                   </Link>
                 </div>
               )}
@@ -169,14 +157,8 @@ const Header = () => {
                 </button>
                 {aboutDropdownOpen && (
                   <div className="pl-4">
-                    <Link to="/about/mission" className="block text-gray-700 hover:text-gray-900 px-2 py-1">
-                      Our Mission
-                    </Link>
-                    <Link to="/about/history" className="block text-gray-700 hover:text-gray-900 px-2 py-1">
-                      Our History
-                    </Link>
-                    <Link to="/about/values" className="block text-gray-700 hover:text-gray-900 px-2 py-1">
-                      Our Values
+                    <Link to="/about-us" className="block text-gray-700 hover:text-gray-900 px-2 py-1">
+                      About Us
                     </Link>
                   </div>
                 )}

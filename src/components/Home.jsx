@@ -1,16 +1,18 @@
 import React from 'react'
-import Header from './Header'
 import HeroCarousel from './HeroSection'
 import FundraiserSpotlights from './FundCards'
 import AboutSection from './About'
+import ImpactSection from './ImpactSection'
+import EngagementSection from './Engagement'
 
 const Home = () => {
     return (
         <div>
-            <Header />
             <HeroCarousel />
             <FundraiserSpotlights />
             <AboutSection />
+            <ImpactSection />
+            <EngagementSection />
         </div>
     )
 }
