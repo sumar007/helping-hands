@@ -8,6 +8,7 @@ import DonationForm from "./pages/Donation";
 import EmployerMatch from "./pages/CorporateMatch";
 import OurWork from "./pages/OurWork";
 import AboutUs from "./pages/AboutUs";
+import Spotlight from "./pages/SpotLight";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/corporate-match" element={<EmployerMatch />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/spotlight" element={<Spotlight />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/donate" element={<DonationForm />} />
         </Routes>
