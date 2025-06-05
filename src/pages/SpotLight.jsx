@@ -5,7 +5,7 @@ import FundraiserCard from "../components/SportlightCards";
 const activeFundraisers = Array.from({ length: 12 }, (_, i) => ({
     title: `EidulAdha Goat ${i + 1}`,
     description: "Share the blessings of Qurbani with those who need it the most...",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=600&fit=crop", title: "Clean Water for All",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=600&fit=crop",
 
     goal: 2000,
     raised: 0,
@@ -15,7 +15,7 @@ const activeFundraisers = Array.from({ length: 12 }, (_, i) => ({
 const completedFundraisers = Array.from({ length: 10 }, (_, i) => ({
     title: `Support Project ${i + 1}`,
     description: "Donation target met. Please donate for more impact...",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop", title: "Healthcare Access",
+    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop",
 
     goal: 900,
     raised: 980,
