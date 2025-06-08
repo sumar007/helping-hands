@@ -1,16 +1,15 @@
-import React from 'react'
-import HeroCarousel from './HeroSection'
-import FundraiserSpotlights from './FundCards'
-import AboutSection from './About'
 import ImpactSection from './ImpactSection'
 import EngagementSection from './Engagement'
+import HeroWithCards from './HeroCards'
+import SimpleSpotlight from './FundCards'
+import VideoSection from './About'
 
 const Home = () => {
     return (
         <div>
-            <HeroCarousel />
-            <FundraiserSpotlights />
-            <AboutSection />
+            <HeroWithCards />
+            <SimpleSpotlight />
+            <VideoSection />
             <ImpactSection />
             <EngagementSection />
         </div>

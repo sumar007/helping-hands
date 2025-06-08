@@ -9,6 +9,10 @@ import EmployerMatch from "./pages/CorporateMatch";
 import OurWork from "./pages/OurWork";
 import AboutUs from "./pages/AboutUs";
 import Spotlight from "./pages/SpotLight";
+import DetailPage from "./components/DetailsPage";
+import EngagementDetail from "./components/ActivityDetails";
+import ContactUs from "./pages/ContactForm";
+import FloatingContactForm from "./components/FloatingForm";
 
 function App() {
 
@@ -18,15 +22,18 @@ function App() {
       <main className="min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
+           <Route path="/details/:id" element={<DetailPage />} />
+            <Route path="/portfolio/:id" element={<EngagementDetail />} />
           <Route path="/our-team" element={<OurTeam />} />
           <Route path="/corporate-match" element={<EmployerMatch />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/spotlight" element={<Spotlight />} />
-          <Route path="/contact" element={<ContactForm />} />
+          <Route path="/contact" element={<ContactUs />} />
           <Route path="/donate" element={<DonationForm />} />
         </Routes>
       </main>
+      <FloatingContactForm />
       <Footer />
     </>
   )
