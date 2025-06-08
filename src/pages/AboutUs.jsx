@@ -9,7 +9,7 @@ const AboutUs = () => {
         {
             id: 1,
             url: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop",
-            alt: "Community helping hands"
+            alt: "Communit helping hands"
         },
         {
             id: 2,
