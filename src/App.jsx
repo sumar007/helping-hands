@@ -13,6 +13,8 @@ import DetailPage from "./components/DetailsPage";
 import EngagementDetail from "./components/ActivityDetails";
 import ContactUs from "./pages/ContactForm";
 import FloatingContactForm from "./components/FloatingForm";
+import LegalStatus from "./pages/LegalStatus";
+import PhotoGallery from "./pages/PhotoGallery";
 
 function App() {
 
@@ -22,9 +24,12 @@ function App() {
       <main className="min-h-screen">
         <Routes>
           <Route path="/" element={<Home />} />
-           <Route path="/details/:id" element={<DetailPage />} />
-            <Route path="/portfolio/:id" element={<EngagementDetail />} />
-          <Route path="/our-team" element={<OurTeam />} />
+          <Route path="/details/:id" element={<DetailPage />} />
+          <Route path="/portfolio/:id" element={<EngagementDetail />} />
+          <Route path="/about-us/our-team" element={<OurTeam />} />
+          <Route path="/about-us/legal-status" element={<LegalStatus />} />
+          <Route path="/about-us/photo-gallery" element={<PhotoGallery />} />
+
           <Route path="/corporate-match" element={<EmployerMatch />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/about-us" element={<AboutUs />} />
