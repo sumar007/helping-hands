@@ -1,214 +1,119 @@
-// import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
-// const slides = [
-//   {
-//     imageUrl:
-//       "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop", title: "Dignity Above All",
-//     description: "Serving the underprivileged with critical medical care.",
-//   },
-//   {
-//     imageUrl:
-//       "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop", title: "Building Hope Together",
-//     description: "Empowering communities through sustainable projects.",
-//   },
-//   {
-//     imageUrl:
-//       "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=600&fit=crop", title: "Clean Water for All",
-//     description: "Bringing safe drinking water to remote villages.",
-//   },
-//   {
-//     imageUrl:
-//       "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1950&q=80",
-//     title: "Educating Young Minds",
-//     description: "Providing quality education where it’s needed most.",
-//   },
-//   {
-//     imageUrl:
-//       "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop", title: "Healthcare Access",
-//     description: "Mobile clinics reaching the farthest corners.",
-//   },
-// ];
-
-// const HeroCarousel = () => {
-//   const [current, setCurrent] = useState(0);
-//   const slideIntervalRef = useRef(null);
-
-//   // Auto‐advance every 5 seconds
-//   useEffect(() => {
-//     startAutoPlay();
-//     return () => stopAutoPlay();
-//   }, [current]);
-
-//   const startAutoPlay = () => {
-//     stopAutoPlay();
-//     slideIntervalRef.current = setInterval(() => {
-//       setCurrent((prev) => (prev + 1) % slides.length);
-//     }, 5000);
-//   };
-
-//   const stopAutoPlay = () => {
-//     if (slideIntervalRef.current) {
-//       clearInterval(slideIntervalRef.current);
-//     }
-//   };
-
-//   const goToSlide = (index) => {
-//     setCurrent(index);
-//   };
-
-//   return (
-//     <section className="relative w-full h-[55vh] md:h-[60vh] lg:h-[65vh] overflow-hidden">
-//       {slides.map((slide, idx) => (
-//         <div
-//           key={idx}
-//           className={`absolute inset-0 transition-opacity duration-1000 ${idx === current ? "opacity-100 z-20" : "opacity-0 z-10"
-//             }`}
-//         >
-//           <img
-//             src={slide.imageUrl}
-//             alt={slide.title}
-//             className="w-full h-full object-cover"
-//           />
-//           {/* Overlay */}
-//           <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-//           {/* Text */}
-//           <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-//             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-//               {slide.title}
-//             </h1>
-//             <p className="mt-4 text-sm md:text-base lg:text-lg text-white drop-shadow-md max-w-2xl">
-//               {slide.description}
-//             </p>
-//           </div>
-//         </div>
-//       ))}
-
-//       {/* Navigation dots */}
-//       <div className="absolute bottom-[-10px] left-0 right-0 flex justify-center items-center space-x-2">
-//         {slides.map((_, idx) => (
-//           <button
-//             key={idx}
-//             onClick={() => goToSlide(idx)}
-//             className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all ${idx === current
-//               ? "bg-white ring-2 ring-yellow-400"
-//               : "bg-gray-300 hover:bg-gray-400"
-//               }`}
-//           ></button>
-//         ))}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default HeroCarousel;
-import React, { useState, useEffect, useRef } from "react";
-
+// Slide data: update URLs as needed
 const slides = [
   {
+    id: "slide1",
     imageUrl:
       "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop",
-    title: "Dignity Above All",
-    description: "Serving the underprivileged with critical medical care.",
+    title: "CREATING A WORLD",
+    subtitle: "WHERE EVERY CHILD HAS THE OPPORTUNITY TO SUCCEED",
   },
   {
+    id: "slide2",
     imageUrl:
       "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop",
-    title: "Building Hope Together",
-    description: "Empowering communities through sustainable projects.",
+    title: "EMPOWERING COMMUNITIES",
+    subtitle: "BUILDING SUSTAINABLE FUTURES",
   },
   {
+    id: "slide3",
     imageUrl:
       "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=600&fit=crop",
-    title: "Clean Water for All",
-    description: "Bringing safe drinking water to remote villages.",
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1950&q=80",
-    title: "Educating Young Minds",
-    description: "Providing quality education where it’s needed most.",
-  },
-  {
-    imageUrl:
-      "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&h=600&fit=crop",
-    title: "Healthcare Access",
-    description: "Mobile clinics reaching the farthest corners.",
+    title: "HEALTHCARE FOR ALL",
+    subtitle: "BRINGING MEDICAL SERVICES TO REMOTE AREAS",
   },
 ];
 
-const HeroCarousel = () => {
-  const [current, setCurrent] = useState(0);
-  const slideIntervalRef = useRef(null);
+const slideVariants = {
+  enter: (direction) => ({
+    opacity: 0,
+    x: direction > 0 ? 100 : -100,
+  }),
+  center: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: (direction) => ({
+    opacity: 0,
+    x: direction < 0 ? 100 : -100,
+  }),
+};
 
-  // Auto‐advance every 5 seconds
+const HeroSection = () => {
+  const [[index, direction], setIndex] = useState([0, 0]);
+
   useEffect(() => {
-    startAutoPlay();
-    return () => stopAutoPlay();
-  }, [current]);
-
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    slideIntervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+    const timer = setInterval(() => {
+      setIndex(([prev]) => [(prev + 1) % slides.length, 1]);
     }, 5000);
-  };
+    return () => clearInterval(timer);
+  }, []);
 
-  const stopAutoPlay = () => {
-    if (slideIntervalRef.current) {
-      clearInterval(slideIntervalRef.current);
-    }
-  };
-
-  const goToSlide = (index) => {
-    setCurrent(index);
-  };
+  const { imageUrl, title, subtitle } = slides[index];
 
   return (
-    <div className="relative w-full h-[45vh] md:h-[65vh] lg:h-[75vh] overflow-hidden rounded-lg">
-      {slides.map((slide, idx) => (
-        <div
-          key={idx}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            idx === current ? "opacity-100 z-20" : "opacity-0 z-10"
-          }`}
+    <section className="relative w-full h-[75vh] overflow-hidden">
+      <AnimatePresence custom={direction} initial={false}>
+        <motion.div
+          key={slides[index].id}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
         >
+          {/* Background Image */}
           <img
-            src={slide.imageUrl}
-            alt={slide.title}
-            className="w-full h-full object-cover"
+            src={imageUrl}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover z-0"
           />
 
-          {/* dark overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-30" />
+          {/* Overlay Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-800/80 via-blue-600/60 to-transparent z-10" />
 
-          {/* text */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg">
-              {slide.title}
+          {/* Text & CTAs */}
+          <div className="relative z-20 max-w-4xl mx-2 mt-12 px-4 py-20 text-center lg:text-left lg:px-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+              {title}
             </h1>
-            <p className="mt-4 text-sm md:text-base lg:text-lg text-white drop-shadow-md max-w-2xl">
-              {slide.description}
+            <p className="mt-4 text-lg md:text-xl text-white max-w-xl">
+              {subtitle}
             </p>
+            <div className="mt-8 flex flex-col sm:flex-row sm:justify-center lg:justify-start gap-4">
+              <Link
+                to="/donate"
+                className="inline-flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-6 py-3 rounded-full transition"
+              >
+                DONATE
+                <span className="ml-3 p-2 border-2 border-white rounded-full">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 11l3-3m0 0l3 3m-3-3v8"
+                    />
+                  </svg>
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
-
-      {/* pagination dots */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => goToSlide(idx)}
-            className={`w-3 h-3 md:w-4 md:h-4 rounded-full transition-all ${
-              idx === current
-                ? "bg-white ring-2 ring-yellow-400"
-                : "bg-gray-300 hover:bg-gray-400"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
+        </motion.div>
+      </AnimatePresence>
+    </section>
   );
 };
 
-export default HeroCarousel;
+export default HeroSection;

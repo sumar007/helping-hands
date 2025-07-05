@@ -15,6 +15,7 @@ import ContactUs from "./pages/ContactForm";
 import FloatingContactForm from "./components/FloatingForm";
 import LegalStatus from "./pages/LegalStatus";
 import PhotoGallery from "./pages/PhotoGallery";
+import TheIssuePage from "./pages/TheIssue";
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
           <Route path="/about-us/our-team" element={<OurTeam />} />
           <Route path="/about-us/legal-status" element={<LegalStatus />} />
           <Route path="/about-us/photo-gallery" element={<PhotoGallery />} />
-
+          <Route path="/the-issue" element={<TheIssuePage />} />
           <Route path="/corporate-match" element={<EmployerMatch />} />
           <Route path="/our-work" element={<OurWork />} />
           <Route path="/about-us" element={<AboutUs />} />

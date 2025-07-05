@@ -1,109 +1,91 @@
-import React from "react";
-import { Mail, Smartphone, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaGlobe,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
+  FaRss,
+} from "react-icons/fa";
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-[#1d2936] text-white px-6 py-6">
-      <div className="max-w-7xl mx-auto grid gap-10 md:grid-cols-3 lg:grid-cols-4">
-        {/* Logo & About */}
-        <div className="md:col-span-1">
+    <footer className="bg-white border-t py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* CONTACT */}
+        <div>
+          <h3 className="text-lg font-bold mb-4">CONTACT</h3>
           <img
-            src="https://www.helpinghandindiango.org/wp-content/uploads/2021/09/logo.png"
-            alt="Helping Hand India Logo"
-            className="mb-4 w-[300px] h-20 object-contains mx-auto md:mx-0"
+            src="/path/to/logo.png"
+            alt="Equal Opportunity"
+            className="h-12 mb-4"
           />
-          <p className="text-gray-300 text-sm">
-            Helping Hand India NGO working at National level for Education,
-            Rehabilitation, and Food to economically backward, elderly &
-            persons with disabilities. Focused on Educational Empowerment
-            for underprivileged children, women & the disabled.
-          </p>
-        </div>
-
-        {/* Contact Info */}
-        <div>
-          <h3 className="text-yellow-400 font-semibold mb-2">Contact</h3>
-          <hr className="border-yellow-400 w-10 mb-4" />
-          <div className="flex items-start text-gray-400 mb-3">
-            <MapPin className="mr-2 mt-1 w-5 h-5 text-white" />
-            <span className="text-sm">
-              Kakrola, Near Dwarka Mor Metro Station, New Delhi –110078
-              (Hostel will reopen after Coronavirus Pandemic)
-            </span>
-          </div>
-          <div className="flex items-center text-gray-400 mb-2">
-            <Mail className="mr-2 text-white w-5 h-5" />
-            <span className="text-sm">
-              office@helpinghandindiango.org
-            </span>
-          </div>
-          <div className="flex items-center text-gray-400">
-            <Smartphone className="mr-2 text-white w-5 h-5" />
-            <span className="text-sm">+91-9990773454, 9873677291</span>
-          </div>
-        </div>
-
-        {/* Menu Links */}
-        <div>
-          <h3 className="text-yellow-400 font-semibold mb-2">Menu</h3>
-          <hr className="border-yellow-400 w-10 mb-4" />
-          <ul className="space-y-2 text-gray-400 text-sm">
-            <li><Link to="/" className="hover:text-white">Home</Link></li>
-            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
-            <li><Link to="/our-work" className="hover:text-white">Our Workings</Link></li>
-            <li><Link to="/blood-support" className="hover:text-white">Blood Support</Link></li>
-            <li><Link to="/techie-girl" className="hover:text-white">Techie Girl</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact Us</Link></li>
-            <li><Link to="/terms" className="hover:text-white">Terms & Conditions</Link></li>
-            <li><Link to="/refund" className="hover:text-white">Refund Policy</Link></li>
-            <li><Link to="/privacy" className="hover:text-white">Privacy Policy</Link></li>
+          <ul className="space-y-2 text-gray-700">
+            <li className="flex items-center">
+              <FaPhoneAlt className="mr-2 text-yellow-500" />
+              +1 123-58847-859
+            </li>
+            <li className="flex items-center">
+              <FaEnvelope className="mr-2 text-yellow-500" />
+              info@abcdefg.com
+            </li>
+            <li className="flex items-center">
+              <FaGlobe className="mr-2 text-yellow-500" />
+              www.abcdefgh.com
+            </li>
           </ul>
         </div>
 
-        {/* Newsletter Signup */}
-        <div>
-          <h3 className="text-yellow-400 font-semibold mb-2">Subscribe</h3>
-          <hr className="border-yellow-400 w-10 mb-4" />
-          <p className="text-sm text-gray-400 mb-4">
-            Sign up to hear and get new update via email.
-          </p>
-          <form className="space-y-3">
-            <input
-              type="text"
-              placeholder="Name"
-              className="w-full p-2 rounded bg-[#2e3b4c] text-white border border-gray-600 focus:outline-none"
-            />
-            <input
-              type="email"
-              placeholder="E-mail"
-              className="w-full p-2 rounded bg-[#2e3b4c] text-white border border-gray-600 focus:outline-none"
-            />
-            <input
-              type="date"
-              className="w-full p-2 rounded bg-[#2e3b4c] text-white border border-gray-600 focus:outline-none"
-            />
-            <input
-              type="text"
-              placeholder="Phone no"
-              className="w-full p-2 rounded bg-[#2e3b4c] text-white border border-gray-600 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded hover:bg-yellow-500 transition"
-            >
-              SUBMIT
-            </button>
-          </form>
+        {/* LINKS */}
+        <div className="border-l border-r border-gray-200 px-6">
+          <h3 className="text-lg font-bold mb-4">LINKS</h3>
+          <ul className="space-y-3 text-gray-700">
+            {[
+              { label: "About Us", to: "/about-us" },
+              { label: "Get Involved", to: "/get-involved" },
+              { label: "Contact Us", to: "/contact" },
+              { label: "Terms & Conditions", to: "/terms" },
+              { label: "Privacy Policy", to: "/privacy" },
+            ].map((link) => (
+              <li key={link.to} className="flex items-center">
+                <span className="w-2 h-2 bg-yellow-500 rounded-full mr-3" />
+                <Link to={link.to} className="hover:underline">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
 
-      {/* Footer Bottom */}
-      <div className="mt-4 text-center border-t border-gray-700 pt-6 text-gray-400 text-sm">
-        © {new Date().getFullYear()}. Helping Hand India NGO. All rights reserved.
+        {/* SOCIAL */}
+        <div>
+          <h3 className="text-lg font-bold mb-4">CONNECT WITH US</h3>
+          <p className="text-gray-700 mb-4">
+            Stay in touch through our social channels:
+          </p>
+          <div className="flex space-x-4">
+            {[
+              { icon: <FaTwitter />, to: "https://twitter.com" },
+              { icon: <FaLinkedinIn />, to: "https://linkedin.com" },
+              { icon: <FaInstagram />, to: "https://instagram.com" },
+              { icon: <FaYoutube />, to: "https://youtube.com" },
+              { icon: <FaRss />, to: "/rss.xml" },
+            ].map((item, idx) => (
+              <a
+                key={idx}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-yellow-500 hover:text-yellow-600 text-2xl"
+              >
+                {item.icon}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

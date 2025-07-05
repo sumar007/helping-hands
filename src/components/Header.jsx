@@ -1,159 +1,188 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  FaFacebookF,
-  FaTwitter,
-  FaYoutube,
-  FaLinkedinIn,
-  FaInstagram,
-  FaPhoneAlt,
-  FaEnvelope,
-} from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { FiChevronDown } from "react-icons/fi";
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+
+  const toggleMobile = () => setMobileOpen(!mobileOpen);
+  const toggleAboutDropdown = () => setAboutDropdownOpen(!aboutDropdownOpen);
 
   return (
-    <header className="w-full">
-      {/* Top Contact Bar */}
-      <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-2 text-sm">
-          <Link to="/">
-            <img
-              src="https://www.helpinghandindiango.org/wp-content/uploads/2021/09/logo.png"
-              alt="Helping Hand India NGO"
-              className="h-16 md:h-20"
-            />
+    <header className="w-full bg-white shadow z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4 md:px-6 relative">
+        {/* Logo */}
+        <Link to="/" className="flex items-center flex-shrink-0">
+          <img
+            src="/path/to/new-logo.png"
+            alt="Equal Opportunity"
+            className="h-10 md:h-12"
+          />
+        </Link>
+
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex space-x-8 items-center">
+          <Link
+            to="/the-issue"
+            className="text-gray-800 font-semibold hover:text-yellow-500"
+          >
+            THE ISSUE
           </Link>
 
-          <div className="flex items-center space-x-4 hidden md:flex">
-            <FaEnvelope />
-            <a href="mailto:office@helpinghandindiango.org" className="hover:underline">
-              office@helpinghandindiango.org
-            </a>
-            <a href="#"><FaFacebookF className="text-blue-800" /></a>
-            <a href="#"><FaTwitter className="text-blue-500" /></a>
-            <a href="#"><FaYoutube className="text-red-600" /></a>
-            <a href="#"><FaLinkedinIn className="text-blue-600" /></a>
-            <a href="#"><FaInstagram className="text-black" /></a>
-            <span className="flex items-center space-x-1 font-semibold">
-              <FaPhoneAlt />
-              <span>9990773454, 9873677291</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navigation */}
-      <div className="bg-[#15386b] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <nav className="hidden md:flex space-x-8 font-semibold text-sm">
-              <Link to="/" className="hover:text-orange-400">HOME</Link>
-
-              {/* ABOUT US Dropdown */}
-              <div className="relative group">
-                <button className="flex items-center hover:text-orange-400">
-                  ABOUT US
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute left-0 mt-2 w-44 bg-blue-100 text-black rounded shadow-lg opacity-0 invisible 
-                  group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out 
-                  transform translate-y-2 group-hover:translate-y-0 z-50">
-                  <Link to="/about-us" className="block px-4 py-2 hover:bg-gray-100">About Us</Link>
-                  <Link to="/about-us/our-team" className="block px-4 py-2 hover:bg-gray-100">Our Team</Link>
-                  <Link to="/about-us/legal-status" className="block px-4 py-2 hover:bg-gray-100">Legal Status</Link>
-                  <Link to="/about-us/photo-gallery" className="block px-4 py-2 hover:bg-gray-100">Photo Gallery</Link>
-                </div>
-              </div>
-
-              {/* OUR WORKINGS Dropdown */}
-              <div className="relative group">
-                <button className="flex items-center hover:text-orange-400">
-                  OUR WORKINGS
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute left-0 mt-2 w-52 bg-blue-100 text-black rounded shadow-lg opacity-0 invisible 
-                  group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out 
-                  transform translate-y-2 group-hover:translate-y-0 z-50">
-                  <Link to="/our-work/helping-hand" className="block px-4 py-2 hover:bg-gray-100">Helping Hand</Link>
-                  <Link to="/our-work/education-childcare" className="block px-4 py-2 hover:bg-gray-100">Education & Child Care</Link>
-                  <Link to="/our-work/women-oldage" className="block px-4 py-2 hover:bg-gray-100">Women & Elder Support</Link>
-                  <Link to="/our-work/health" className="block px-4 py-2 hover:bg-gray-100">Health Programs</Link>
-                  <Link to="/our-work/workfromhome-sponsorship" className="block px-4 py-2 hover:bg-gray-100">Work From Home & Sponsorship</Link>
-                </div>
-              </div>
-
-              {/* BLOOD DONATION Dropdown */}
-              <div className="relative group">
-                <button className="flex items-center hover:text-orange-400">
-                  BLOOD DONATION
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute left-0 mt-2 w-44 bg-blue-100 text-black rounded shadow-lg opacity-0 invisible 
-                  group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out 
-                  transform translate-y-2 group-hover:translate-y-0 z-50">
-                  <Link to="/blood-donation" className="block px-4 py-2 hover:bg-gray-100">Overview</Link>
-                  <Link to="/blood-donation/coupons" className="block px-4 py-2 hover:bg-gray-100">Donation Coupons</Link>
-                </div>
-              </div>
-
-              {/* GET INVOLVED Dropdown */}
-              <div className="relative group">
-                <button className="flex items-center hover:text-orange-400">
-                  GET INVOLVED
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div className="absolute left-0 mt-2 w-44 bg-blue-100 text-black rounded shadow-lg opacity-0 invisible 
-                  group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out 
-                  transform translate-y-2 group-hover:translate-y-0 z-50">
-                  <Link to="/get-involved/volunteer" className="block px-4 py-2 hover:bg-gray-100">Volunteer</Link>
-                  <Link to="/get-involved/sponsor" className="block px-4 py-2 hover:bg-gray-100">Sponsor a Child</Link>
-                </div>
-              </div>
-
-
-              <Link to="/projects-goal" className="hover:text-orange-400">PROJECTS ’N’ GOAL</Link>
-              <Link to="/school-at-home" className="hover:text-orange-400">SCHOOL AT HOME</Link>
-              <Link to="/contact" className="hover:text-orange-400">CONTACT US</Link>
-            </nav>
-
-            {/* Mobile Menu Button */}
+          {/* ABOUT US dropdown trigger */}
+          <div className="relative">
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden focus:outline-none"
-              aria-label="Toggle menu"
+              onClick={toggleAboutDropdown}
+              className="flex items-center gap-1 text-gray-800 font-semibold hover:text-yellow-500 focus:outline-none"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={
-                  mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-                } />
-              </svg>
+              ABOUT US <FiChevronDown />
             </button>
 
-            {/* Donate CTA */}
-            <a
-              href="https://buy.stripe.com/test_fZu5kD0tZ2bv3FH4ipfYY00"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-4 inline-block bg-orange-500 hover:bg-orange-600 transition px-5 py-2 rounded-full"
-            >
-              Donate Now
-            </a>
+            {/* Dropdown */}
+            {aboutDropdownOpen && (
+              <div className="absolute top-full mt-2 left-0 bg-white border border-gray-200 rounded shadow-md py-2 w-56 z-50">
+                <Link
+                  to="/about-us"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-100"
+                  onClick={() => setAboutDropdownOpen(false)}
+                >
+                  About Us
+                </Link>
+                <Link
+                  to="/our-priorities"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-100"
+                  onClick={() => setAboutDropdownOpen(false)}
+                >
+                  Our Priorities
+                </Link>
+                <Link
+                  to="/our-partners"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-100"
+                  onClick={() => setAboutDropdownOpen(false)}
+                >
+                  Our Partners
+                </Link>
+                <Link
+                  to="/about-us/our-team"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-yellow-100"
+                  onClick={() => setAboutDropdownOpen(false)}
+                >
+                  Our Leadership
+                </Link>
+              </div>
+            )}
           </div>
-        </div>
 
-        {/* Mobile Navigation */}
-        {/* You can implement the mobile dropdowns using `dropdownOpen` flags just like before */}
+          <Link
+            to="/our-impact"
+            className="text-gray-800 font-semibold hover:text-yellow-500"
+          >
+            OUR IMPACT
+          </Link>
+          <Link
+            to="/get-involved"
+            className="text-gray-800 font-semibold hover:text-yellow-500"
+          >
+            GET INVOLVED
+          </Link>
+          <Link
+            to="/donate"
+            className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-full transition"
+          >
+            DONATE
+          </Link>
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={toggleMobile}
+          className="md:hidden text-gray-800 focus:outline-none"
+          aria-label="Toggle menu"
+        >
+          {mobileOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Nav Overlay */}
+      {mobileOpen && (
+        <div className="md:hidden bg-white shadow-lg border-t">
+          <nav className="flex flex-col space-y-4 py-6 px-4">
+            <Link
+              to="/the-issue"
+              onClick={toggleMobile}
+              className="text-gray-800 font-medium hover:text-yellow-500"
+            >
+              THE ISSUE
+            </Link>
+
+            {/* About Us Dropdown for Mobile */}
+            <div>
+              <button
+                onClick={toggleAboutDropdown}
+                className="flex items-center justify-between w-full text-gray-800 font-medium hover:text-yellow-500"
+              >
+                ABOUT US <FiChevronDown />
+              </button>
+              {aboutDropdownOpen && (
+                <div className="pl-4 mt-2 space-y-2">
+                  <Link
+                    to="/about-us"
+                    className="block text-gray-700 hover:text-yellow-600"
+                    onClick={toggleMobile}
+                  >
+                    About Us
+                  </Link>
+                  <Link
+                    to="/our-priorities"
+                    className="block text-gray-700 hover:text-yellow-600"
+                    onClick={toggleMobile}
+                  >
+                    Our Priorities
+                  </Link>
+                  <Link
+                    to="/our-partners"
+                    className="block text-gray-700 hover:text-yellow-600"
+                    onClick={toggleMobile}
+                  >
+                    Our Partners
+                  </Link>
+                  <Link
+                    to="/about-us/our-team"
+                    className="block text-gray-700 hover:text-yellow-600"
+                    onClick={toggleMobile}
+                  >
+                    Our Leadership
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link
+              to="/our-impact"
+              onClick={toggleMobile}
+              className="text-gray-800 font-medium hover:text-yellow-500"
+            >
+              OUR IMPACT
+            </Link>
+            <Link
+              to="/get-involved"
+              onClick={toggleMobile}
+              className="text-gray-800 font-medium hover:text-yellow-500"
+            >
+              GET INVOLVED
+            </Link>
+            <Link
+              to="/donate"
+              onClick={toggleMobile}
+              className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-full transition text-center"
+            >
+              DONATE
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };

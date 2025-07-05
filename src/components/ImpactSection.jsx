@@ -36,7 +36,7 @@ const helpData = [
 const ImpactSection = () => {
   return (
     <section
-      className="w-full bg-cover bg-center bg-no-repeat py-16 px-4"
+      className="w-full bg-cover bg-center bg-no-repeat py-16 px-4 lg:h-[80vh] md:h-96"
       style={{
         backgroundImage: `url('https://www.helpinghandindiango.org/wp-content/uploads/2021/10/how-to-help-2.jpg')`, // Replace with your actual background image path
         backgroundColor: "#00336699",

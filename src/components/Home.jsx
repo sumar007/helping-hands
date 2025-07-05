@@ -1,17 +1,19 @@
 import ImpactSection from './ImpactSection'
-import EngagementSection from './Engagement'
-import HeroWithCards from './HeroCards'
 import SimpleSpotlight from './FundCards'
-import VideoSection from './About'
+import HeroSection from './HeroSection'
+import StoriesSection from './Stories'
+import OrganizationManagement from './Engagement'
+import ContactUs from './ContactUs'
 
 const Home = () => {
     return (
         <div>
-            <HeroWithCards />
+            <HeroSection />
             <SimpleSpotlight />
-            <VideoSection />
+            <StoriesSection />
             <ImpactSection />
-            <EngagementSection />
+            <OrganizationManagement />
+            <ContactUs />
         </div>
     )
 }
